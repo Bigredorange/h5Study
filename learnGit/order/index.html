@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <title>小熊电器订单查询</title>
+    <link rel="stylesheet" href="style/css/ionic.min.css"/>
+    <link rel="stylesheet" href="style/css/myStyle.css">
+    <link rel="stylesheet" href="style/css/sie_style.css"/>
+    <link rel="stylesheet" href="style/css/myCss2.css" >
+
+    <script src="js/extendlibs/iscroll.js"></script>
+</head>
+<body>
+<!--<ion-nav-bar  align-title="center" >-->
+    <!--<ion-nav-buttons  side="left">-->
+        <!--<back></back>-->
+    <!--</ion-nav-buttons>-->
+<!--</ion-nav-bar>-->
+<ion-nav-view></ion-nav-view>
+</body>
+<script src="js/config.js"></script>
+<script src="js/libs/ionic/ionic.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/router.js"></script>
+<!--wpt-->
+<!--<script src="js/extendlibs/wpt-1.0.0.js?r=1"></script>-->
+<!--filter-->
+<!--service-->
+<script src="js/service/Util.js"></script>
+<!--directive-->
+<script src="js/directive/directive.js"></script>
+<!--controller-->
+<script src="js/controllers/orderQuery.js"></script>
+<script src="js/controllers/orderDetail.js"></script>
+<script type="text/javascript">
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    //根据配置来引入
+    /*if (isAndroid) {
+     document.write('<script src="js\/extendlibs\/android\/cordova.js"><\/script>');
+     document.write('<script src="js\/extendlibs\/android\/cordova_plugins.js"><\/script>');
+     } else {
+     //IOS 自动引入，不需要人工引入
+     document.write('<script src="js\/extendlibs\/ios\/cordova.js"><\/script>');
+     document.write('<link rel="stylesheet" href="style/css/default-ios.css"/>')
+     }*/
+</script>
+
+</html>

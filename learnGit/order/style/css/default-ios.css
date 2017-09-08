@@ -1,0 +1,26 @@
+
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+    height: 64px;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+    margin-top: 20px!important;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .has-header,
+.platform-ios.platform-cordova:not(.fullscreen) .bar-subheader {
+    top: 64px;
+}
+.tabs-top>.tabs, .tabs.tabs-top{
+    top:64px;
+}
+/*.platform-ios.platform-cordova:not(.fullscreen) .has-subheader,*/
+/*.platform-ios.platform-cordova:not(.fullscreen) .has-tabs-top2{
+    top: 113px!important;
+}*/
+.height98{
+    height: 64px;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .has-subheader2{
+    top: 98px!important;
+}
+

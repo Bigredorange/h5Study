@@ -1,0 +1,104 @@
+<ion-view class="todo">
+    <ion-header-bar class="head-bar-color " align-title="center">
+        <back></back>
+        <h1 class="title head-txt">订单查询</h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header">
+        <div class="paddingLtRt10">
+            <div class="line">
+                <!--<span class="lineLtTxt">账套</span><input class="borderNone" placeholder="请输入" />-->
+                <span class="lineLtTxt">账套</span><div class="width100 height20">{{sob}}</div>
+                <div ng-click="openPopover()"><img class="width15 marginBt4"  src="style/images/more.png"></div>
+            </div>
+            <div class="line">
+                <span class="lineLtTxt">订单编号</span><input ng-model="inputVal.orderNum" class="borderNone" placeholder="请输入"/>
+            </div>
+            <div class="line">
+                <span class="lineLtTxt">订单状态</span>
+                <select class="width100 borderNone" ng-model="selectOrderItem.orderState" ng-change="selectOrderState()">
+                    <option value=""></option>
+                    <option ng-repeat="orderS in orderStates" value="{{orderS.DICTNAME}}">{{orderS.DICTNAME}}</option>
+                </select>
+                 <img class="width12 absRt15 marginTop5"  src="style/images/select.png">
+            </div>
+            <div class="line">
+                <span class="lineLtTxt">订单类型</span>
+                <div class="width100 height20">{{orderTypeSelect}}<span class="paddingLt5 ion-ios-close-empty font16 {{orderTypeSelect==undefined||orderTypeSelect==''?'hide':''}}" ng-click="deleteDate('type')"></span></div>
+                <div ng-click="openPopover1()"><img class="width15 marginBt4"  src="style/images/more.png"></div>
+            </div>
+            <div class="line">
+                <span class="lineLtTxt">销售类型</span>
+                <select class="width100 borderNone" ng-model="selectOrderItem.orderType" ng-change="selectSaleType()">
+                    <option value=""></option>
+                    <option ng-repeat="orderT in saleTypes" value="{{orderT.DICTNAME}}">{{orderT.DICTNAME}}</option>
+                </select>
+                <img class="width12 absRt15 marginTop5" src="style/images/select.png">
+            </div>
+            <div class="line">
+                <span class="lineLtTxt">客户名称</span>
+                <input class="borderNone" placeholder="请输入" ng-model="inputVal.customerName" ng-blur=""/>
+            </div>
+            <div class="line">
+                <span class="lineLtTxt">订单开始日期</span>
+                <div class="flex width100">
+                    <span class="left height20 paddingRt10">{{startDate}}</span>
+                    <span class="ion-ios-close-empty font16 {{startDate==''?'hide':''}}" ng-click="deleteDate('start')"></span>
+                    <!--<img class="calendarImg " ng-click="selectDay(1)" src="style/images/calendar1.png"/>-->
+                    <span class="ion-ios-calendar-outline font-color font20 absRt15" ng-click="selectDay(1)"></span>
+                </div>
+            </div>
+            <div class="line ">
+                <span class="lineLtTxt left">订单结束日期</span>
+                <div class="flex width100">
+                    <span class="left height20 paddingRt10">{{endDate}}</span>
+                    <span class="ion-ios-close-empty font16 {{endDate==''?'hide':''}}" ng-click="deleteDate()"></span>
+                    <!--<img class="calendarImg" ng-click="selectDay()" src="style/images/calendar.png"/>-->
+                    <span class="ion-ios-calendar-outline font-color font20 absRt15" ng-click="selectDay()"></span>
+                </div>
+            </div>
+            <div class=" padding10 center ">
+                <button class="button button-positive btnConfirm bg-app margin0" ng-click="getOrders()">查询</button>
+            </div>
+        </div>
+        <div class="lineArea"></div>
+        <div class="padding10 paddingBt0" ng-click="goOrderDetail($index)" ng-repeat="item in orders">
+            <div class="row">
+                <div class=" ">订单号:{{item.orderNum}}</div>
+                <div class=" absRt10">{{item.creationDate}}</div>
+            </div>
+            <div class="row borderBt">
+                <div class=" width80p">客户名称:{{item.customerName}}</div>
+                <div class=" absRt10">{{item.statusName}}</div>
+            </div>
+        </div>
+        <div class="center" ng-if="hasMore&&isFirst">下拉加载更多数据</div>
+        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="hasMore&&isFirst">
+        </ion-infinite-scroll>
+        <div class="center" ng-if="!hasMore">暂无更多数据</div>
+
+    </ion-content>
+</ion-view>
+<script id="templates/myPopover.html" type="text/ng-template">
+    <div class="myPopover">
+        <ion-popover-view class="arrowContainer">
+            <ion-content>
+                <ion-list class="list" >
+                    <ion-item class="item" ng-click="selectItem($index)" ng-repeat="item in popoverItems">{{item.orgName}}</ion-item>
+                    <!--<ion-item class="item" ng-click="goBillDay()">单据明细</ion-item>-->
+                </ion-list>
+            </ion-content>
+        </ion-popover-view>
+    </div>
+</script>
+<script id="templates/myPopover1.html" type="text/ng-template">
+    <div class="myPopover">
+        <ion-popover-view class="arrowContainer">
+            <ion-content>
+                <ion-list class="list" >
+                    <ion-item class="item" ng-click="selectItem1($index)" ng-repeat="item in orderTypes">{{item.orderTypeName}}</ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-popover-view>
+    </div>
+</script>

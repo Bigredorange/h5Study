@@ -1,0 +1,128 @@
+<ion-view>
+    <ion-header-bar class="head-bar-color borderBt" align-title="center">
+        <back></back>
+        <h1 class="title head-txt">订单详情</h1>
+    </ion-header-bar>
+        <ion-tabs class="tabs-standard tabs-top tabs-striped detail-tabs bg-f5">
+            <ion-tab title="产品信息">
+                <ion-content >
+                    <div class="height98"></div>
+                    <ion-scroll direction="xy" class="paddingTp10 height500" scrollbar-x="false" scrollbar-y="false">
+                        <table class="tableCon">
+                            <tr>
+                                <td></td>
+                                <td>客户PO单号</td>
+                                <td>产品名称</td>
+                                <td>产品编码</td>
+                                <td>是否特价机</td>
+                                <td>申请数量</td>
+                                <td>审批数量</td>
+                                <td>默认价</td>
+                                <td>开单价</td>
+                                <td>开单金额</td>
+                                <td>审批金额</td>
+                                <td>行备注</td>
+                                <td>评审备注</td>
+                                <td>单位体积</td>
+                                <td>总体积</td>
+                                <td>发出仓库</td>
+                                <td>发出商品仓库</td>
+                                <td>转结数量</td>
+                                <td>实发数量</td>
+                                <td>少发数量</td>
+                                <td>关闭数量</td>
+                            </tr>
+                            <tr ng-repeat="o in orders">
+                                <td></td>
+                                <td>{{o.clientPoNo}}</td>
+                                <td>{{o.materialName}}</td>
+                                <td>{{o.materialCode}}</td>
+                                <td>{{o.isSpecialMachine!=null&&o.isSpecialMachine==N?'否':'是'||o.isSpecialMachine==null?'':''}}</td>
+                                <td>{{o.orderQuantity}}</td>
+                                <td>{{o.approvalQty}}</td>
+                                <td>{{o.price}}</td>
+                                <td>{{o.netPrice}}</td>
+                                <td>{{o.sumAmount}}</td>
+                                <td>{{o.approveAmount}}</td>
+                                <td>{{o.remark}}</td>
+                                <td>{{o.rejectReason}}</td>
+                                <td>{{o.volume}}</td>
+                                <td>{{o.totalVolume}}</td>
+                                <td>{{o.deliveryWarehouseName}}</td>
+                                <td>{{o.deliveryGoodsWarehouse}}</td>
+                                <td>{{o.carryoverQuantity}}</td>
+                                <td>{{o.realQuantity}}</td>
+                                <td>{{o.lessQuantity}}</td>
+                                <td>{{o.closeQuantity}}</td>
+
+                            </tr>
+                            <tr>
+                                <td>合计</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>{{orders.orderQuantityTotal}}</td>
+                                <td>{{orders.approvalQtyTotal}}</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{orders.sumAmountTotal}}</td>
+                                <td>{{orders.approveAmountTotal}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>{{orders.totalVolumeTotal}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </ion-scroll>
+                </ion-content>
+            </ion-tab>
+            <ion-tab title="基本信息">
+                <ion-content>
+                    <div class="height98"></div>
+                    <div class="paddingLtRt10">
+                        <div class="line">
+                            <span class="lineLtTxt">紧急程度</span><span>{{order.emergencyDegreeName}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">运输方式</span><span>{{order.transTypeName}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">发货地点</span><span>{{order.exportAreaName}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">收货地点</span><span>{{order.inceptAreaName}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">运输路线</span><span>{{order.routeName}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">收货联系人</span><span>{{order.customerContact}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">收货联系电话</span><span>{{order.contactTel}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">制单人</span><span>{{order.createdByName}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">制单时间</span><span>{{order.creationDate}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">是否已入库存接口表</span><span>{{order.writeInvIfFlag==null?'':''||order.writeInvIfFlag=='N'?'否':'是'}}</span>
+                        </div>
+                        <div class="line">
+                            <span class="lineLtTxt">是否已输入运输任务接口</span><span>{{order.writeTransIfFlag==null?'':''||order.writeTransIfFlag=='N'?'否':'是'}}</span>
+                        </div>
+                    </div>
+                </ion-content>
+            </ion-tab>
+        </ion-tabs>
+
+</ion-view>
